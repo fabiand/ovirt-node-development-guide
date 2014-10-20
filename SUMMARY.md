@@ -1,10 +1,7 @@
-# Summary
+Summary
+=======
 
-* [Rationale](README.md)
-  * Requirements
-  * Upgrade & Rollback
-  * Testability
-  * Extendability
+* [Introduction](README.md)
 * [Platform / Appliance](os/README.md)
   * Specification
   * Build
