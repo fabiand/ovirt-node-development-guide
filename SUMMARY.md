@@ -1,16 +1,13 @@
 # Summary
 
-
-* [Requirements & Specification](README.md)
-  * Platform
-  * Installation
+* [Rationale](README.md)
+  * Requirements
   * Upgrade & Rollback
-  * Persistence
   * Testability
   * Extendability
 * [Platform / Appliance](os/README.md)
-  * [Specification](os/spec.md)
-  * [Build](os/build.md)
+  * Specification
+  * Build
 * [Lifecycle](runtime/README.md)
   * [Installation](runtime/installation.md)
     * Manual
