@@ -29,4 +29,6 @@ Summary
   * Dervied specification
   * Offline image modification
   * Online customization
-
+* [oVirt Engine integration](engine/README.md)
+  * Local image discovery
+  * Registration

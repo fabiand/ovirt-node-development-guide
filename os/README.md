@@ -31,6 +31,22 @@ Creating the appliance image is fairly simple:
 
 Once anaconda finishes the target image will contain the rootfs.
 
+Independently of what method is used, this works as follows:
+
++ A qcow2 target image is created, it will hold the rootfs
++ A VM is spawned, booting the kernel, initrd, append line from a
+  boot ISO. The kickstart specifying the rootfs is passed as a kernel
+  argument
++ anaconda get's started as part of the boot process, it retirves the
+  kickstart url from the cmldine, fetches it and starts the
+  installation.
+  + The target disk is formated
+  + A package manager (yum/dnf) is called to install the packages on disk
+    like in a regular transaction
+
+`livemedia-creator` encapsulatres most of this in a single command, the plain `qemu` approach
+does all fo this in steps. Each approach has it's drawbacks and benefits.
+
 
 Plain qemu approach
 -------------------
