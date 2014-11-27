@@ -45,7 +45,8 @@ imfornatioms which can be used by Engine to offer suggestions to a user.
 Registration
 ------------
 
-A approached solution is the generic registration.
+The approached solution is the generic registration.
+
 In a nutshell: Generic registration will ask Engine to initiate the
-registration with Node. This means the same registatraion mechanism
+registration with Node. This means the same mechanism
 is used for Engine side and Node side initiated registration.
