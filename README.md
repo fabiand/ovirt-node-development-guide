@@ -27,3 +27,7 @@ What we do not want to achieve
 + General prupose operating system
 + Flexible
 + Package based
+
+
+[Specification](#spec)
+=============

@@ -2,33 +2,34 @@ Summary
 =======
 
 * [Introduction](README.md)
-* [Platform / Appliance](os/README.md)
-  * Specification
-  * Build
+* [Appliance Specification](README.md#spec)
 * [Lifecycle](runtime/README.md)
-  * [Installation](runtime/installation.md)
+  * [Installation](runtime.md#installation)
     * Manual
     * Automatic
-  * [Configuration](runtime/configure.md)
-  * [Upgrade & Rollback](runtime/upgrade.md)
+  * [Configuration](runtime.md#configuration)
+  * [Upgrade & Rollback](runtime.md#upgrade)
     * Persistence
-  * [Removal](runtime/removal.md)
-* [Implementation](impl/README.md)
-  * [LVM Thin](impl/lvm.md)
+  * [Removal](runtime.md#removal)
+* [Implementation](impl.md#README/)
+  * [Platform / Appliance](impl.md#platform/)
+    * Specification
+    * Build
+  * [LVM Thin](impl.md#lvm/)
     * Creation
     * Update
     * Fallback
-  * [Persistence](impl/persistence.md)
-  * [BLS](impl/boot.md)
-  * [Kickstart generator](impl/kickstart_from_cmdline.md)
-* [Testing](testing/README.md)
+  * [Persistence](impl.md#persistence/)
+  * [BLS](impl.md#boot/)
+  * [Kickstart generator](impl.md#kickstart_from_cmdline/)
+* [Testing](testing.md)
   * Static checking
   * Unit testing
   * Functional testing
-* [Customization / Extending](extend/README.md)
+* [Customization / Extending](customization.md)
   * Dervied specification
   * Offline image modification
   * Online customization
-* [oVirt Engine integration](engine/README.md)
+* [oVirt Engine integration](engine.md)
   * Local image discovery
   * Registration
