@@ -31,3 +31,11 @@ What we do not want to achieve
 
 [Specification](#spec)
 =============
+
+Deliveryformat
+--------------
+
+Node is delivered in one of these formats:
+
++ Filesystem image (ext4, …)
++ Tarball of the rootfs
