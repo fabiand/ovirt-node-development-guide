@@ -9,16 +9,18 @@ Summary
     * Automatic
   * [Configuration](runtime.md#configuration)
     * Local
-    * Management
-  * [Customization](runtime.md#customization)
+    * Managed
   * [Upgrade & Rollback](runtime.md#upgrade)
     * Persistence
   * [Removal](runtime.md#removal)
+  * [Customization](runtime.md#customization)
+    * Package installation
+    * Plugins
 * [Implementation](impl.md#README)
   * [Platform / Appliance](impl.md#platform)
     * Specification
     * Build
-  * [LVM Thin](impl.md#lvm/)
+  * [Image Storage](impl.md#lvm)
     * Creation
     * Update
     * Fallback
