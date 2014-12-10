@@ -24,8 +24,9 @@ Summary
     * Creation
     * Update
     * Fallback
+  * [Fallback](impl.md#boot)
+    * BLS
   * [Persistence](impl.md#persistence)
-  * [BLS](impl.md#boot)
   * [Kickstart generator](impl.md#kickstart_from_cmdline)
 * [Testing](testing.md)
   * Static checking
