@@ -2,6 +2,7 @@ Summary
 =======
 
 * [Introduction](README.md)
+* [Design](design.md)
 * [Appliance Specification](README.md#spec)
 * [Lifecycle](runtime/README.md)
   * [Installation](runtime.md#installation)
