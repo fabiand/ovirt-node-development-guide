@@ -74,5 +74,8 @@ If the kickstart defining the appliance is available, the image can be built usi
 
 # Build tooling: `image-tools`
 
-> FIXME this tool should be obsoleted by koji and livemdia-creator
+The `image-tools` [repository](https://github.com/fabiand/image-tools) contains some tooling to build the appliance images.
 
+This is very redundant to `livemedia-creator` and `koji`.
+
+> FIXME this tool should be obsoleted by koji and livemdia-creator
