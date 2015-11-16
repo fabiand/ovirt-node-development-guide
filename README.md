@@ -27,24 +27,3 @@ What we do not want to achieve
 + General prupose operating system
 + Flexible
 + Package based
-
-
-[Specification](#spec)
-=============
-
-Deliveryformat
---------------
-
-The Node image is delivered as a liveimg compatible squashfs image. The format is described in `man dracut.cmdline`:
-
-    The filesystem structure is expected to be:
-
-       squashfs.img          |  Squashfs downloaded via network
-          !(mount)
-          /LiveOS
-              |- ext3fs.img  |  Filesystem image to mount read-only
-                   !(mount)
-                   /bin      |  Live filesystem
-                   /boot     |
-                   /dev      |
-                   ...       |
