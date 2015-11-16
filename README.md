@@ -35,7 +35,16 @@ What we do not want to achieve
 Deliveryformat
 --------------
 
-Node is delivered in one of these formats:
+The Node image is delivered as a liveimg compatible squashfs image. The format is described in `man dracut.cmdline`:
 
-+ Filesystem image (ext4, …)
-+ Tarball of the rootfs
+    The filesystem structure is expected to be:
+
+       squashfs.img          |  Squashfs downloaded via network
+          !(mount)
+          /LiveOS
+              |- ext3fs.img  |  Filesystem image to mount read-only
+                   !(mount)
+                   /bin      |  Live filesystem
+                   /boot     |
+                   /dev      |
+                   ...       |
