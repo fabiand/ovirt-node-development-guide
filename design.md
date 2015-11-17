@@ -16,6 +16,10 @@ The design relies on a couple of distinct and independent concepts:
 * Upgrade & Rollback: imgbased
 * Filesystem layout and concepts: Like [OSTree](https://github.com/GNOME/ostree) and ["Project Stateless"](http://0pointer.net/blog/projects/stateless.html)
 
+## Overview
+
+![](imgs/ngn-flow.dot.png)
+
 ## Image Format: Liveimg
 
 The liveimg image format is a Fedora- and CentOS-ish format used to deliver LiveCDs.
