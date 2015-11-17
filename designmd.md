@@ -1,6 +1,13 @@
 # Design
 
-## Core concepts
+## Principles
+
+* Re-use existing and mature technologies (anaconda, lvm, cockpit)
+* Fix upstream to fit our design
+* Keep it simple
+* Separate areas of responsibility (image vs installation vs image management & upgrade)
+
+## Core technologies
 
 The design relies on a couple of distinct and independent concepts:
 
