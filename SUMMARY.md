@@ -1,7 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
-* [Design](designmd.md)
+* [Design](design.md)
 * [Build process](build.md)
 * [Lifecycle](runtime/README.md)
    * [Installation](runtime.md#installation)
