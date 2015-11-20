@@ -12,9 +12,9 @@ A few principles provide the frame for the upcoming design decisions:
 
 ## Life-cycle Overview
 
-Before diving into the technical details let us get overview over how the life of an image is envisioned. Once we are aware of this, we can see what components can be used to fill these stations.
+Before diving into the technical details let us get overview over how the life of an image is envisioned. Once we are aware of this, we can see what components[^1] can be used to fill these stations.
 
-> Note: When speaking of components, it is referred to another software project.
+[^1] When speaking of components, it is referred to another software project.
 
 ![The life-cycle of an image.](imgs/ngn-flow.dot.png)
 
@@ -28,7 +28,7 @@ The **testing** can be considered to perform some sanity tests to i.e.
 - essential packages are installed,
 - but can also cover basic functional testing.
 
-Once the image is good, and image is **published** for user consumption.
+Once the image is good, it is **published** for further user consumption.
 
 
 The remaining steps are the performed by users.
@@ -55,11 +55,8 @@ In the light of the principles, the following (mainly) already existing technolo
 * Filesystem layout and concepts: Like [OSTree](https://github.com/GNOME/ostree) and ["Project Stateless"](http://0pointer.net/blog/projects/stateless.html)
 * Administration: Cockpit
 
-The following diagram visualizes in what flows these technologies are used.
 
-
-
-## Image Format: Liveimg
+### Image Format: Liveimg
 
 Node is installed (and updated) using a single operating system image.
 Contrary to many other distributions packages are not used to install the operating system. Packages are primarily used to [build the image](build.md), and eventually to [customize the image](impl.md).
@@ -106,7 +103,14 @@ The assumption is that these mechanisms above provide enough structure to build 
 
 ## Cockpit
 
+[The cockpit project](http://www.cockpti-project.org) is building a web-based UI to administrate a host.
 
 # Detailed Flow
 
-![](imgs/ngn-flow.dot.png)
+Now that we are aware of all the components we can assign them to the specific flows.
+The resulting diagram is shown below.
+You might notice that the diagram contains a few previously unnamed components, no worries, we'll speak about them later on.
+
+![](imgs/ngn-flow-components.dot.png)
+
+By now we assume that you got an idea of how the life-cycle of a Node looks, and what components are used in the specific flows.
