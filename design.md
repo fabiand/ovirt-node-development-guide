@@ -2,6 +2,8 @@
 
 ## Principles
 
+A few principles provide the frame for the upcoming design decisions:
+
 * Re-use existing and mature technologies (anaconda, lvm, cockpit)
 * Fix upstream to fit our design
 * Keep it simple
@@ -9,7 +11,7 @@
 
 ## Core technologies
 
-The design relies on a couple of distinct and independent concepts:
+In the light of the principles above, the following (mainly) already existing technologies are combined to achieve the aspired goals:
 
 * Image format: liveimg
 * Installation: anaconda
