@@ -1,29 +1,9 @@
 # Image build process
 
-The appliance image is delivered in the squashfs liveimg format.
-This format is understood by anaconda and dracut.
+## Overview
 
-## Deliveryformat
 
-The format is described in `man dracut.cmdline`:
-
-    The filesystem structure is expected to be:
-
-       squashfs.img          |  Squashfs downloaded via network
-          !(mount)
-          /LiveOS
-              |- ext3fs.img  |  Filesystem image to mount read-only
-                   !(mount)
-                   /bin      |  Live filesystem
-                   /boot     |
-                   /dev      |
-                   ...       |
-
-> Note: the `ext3fs.img` is a file-system image, not a disk image.
-
-The `ext3fs.img` can be created using a range of tools, the primary one being `livemedia-creator` (part of `lorax`).
-
-[Eventually](https://bugzilla.redhat.com/show_bug.cgi?id=1282496) `livemedia-creator` will be capable of creating squashfs images directly.
+![](imgs/build-flow.dot.png)
 
 
 ## Specification
@@ -79,3 +59,30 @@ The `image-tools` [repository](https://github.com/fabiand/image-tools) contains 
 This is very redundant to `livemedia-creator` and `koji`.
 
 > FIXME this tool should be obsoleted by koji and livemdia-creator
+
+
+## Deliveryformat
+
+The appliance image is delivered in the squashfs liveimg format.
+
+This format is understood by anaconda (for installation) and dracut (for state- and diskless boots).
+
+The format is described in `man dracut.cmdline`:
+
+    The filesystem structure is expected to be:
+
+       squashfs.img          |  Squashfs downloaded via network
+          !(mount)
+          /LiveOS
+              |- ext3fs.img  |  Filesystem image to mount read-only
+                   !(mount)
+                   /bin      |  Live filesystem
+                   /boot     |
+                   /dev      |
+                   ...       |
+
+> Note: the `ext3fs.img` is a file-system image, not a disk image.
+
+The `ext3fs.img` can be created using a range of tools, the primary one being `livemedia-creator` (part of `lorax`).
+
+[Eventually](https://bugzilla.redhat.com/show_bug.cgi?id=1282496) `livemedia-creator` will be capable of creating squashfs images directly.
