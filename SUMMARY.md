@@ -3,17 +3,16 @@
 * [Introduction](README.md)
 * [Design](design.md)
 * [Build process](build.md)
-* [Lifecycle](runtime/README.md)
-   * [Installation](runtime.md#installation)
-   * [Configuration](runtime.md#configuration)
-   * [Upgrade & Rollback](runtime.md#upgrade)
-   * [Removal](runtime.md#removal)
-   * [Customization](runtime.md#customization)
-* [Implementation](impl.md#README)
-   * [Appliance Build Process](impl.md#platform)
-   * [Image Management](impl.md#lvm)
-   * [Boot loader](impl.md#boot)
-   * [Persistence](impl.md#persistence)
+* [Life-cycle](runtime.md)
+   * Installation
+   * Configuration
+   * Upgrade & Rollback
+   * Customization
+* [Implementation](impl.md)
+   * Appliance Build Process
+   * Image Management
+   * Boot loader
+   * Persistence
 * [Testing](testing.md)
 * [Customization / Extending](customization.md)
 * [oVirt Engine integration](engine.md)
