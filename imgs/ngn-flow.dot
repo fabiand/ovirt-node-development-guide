@@ -1,12 +1,12 @@
 
 digraph G {
-	rankdir=LR
+	rankdir=TD
 	{	node [style=filled shape=box]
-		build test publish install upgrade rollback administer
+		build test publish customize install upgrade rollback administer
 	}
 	subgraph cluster_0 {
 		edge [penwidth=3.0]
-		build -> test -> publish -> install
+		build -> test -> publish -> customize -> install
 		administer -> install -> administer
 		administer -> upgrade -> administer
 		administer -> rollback -> administer
@@ -15,14 +15,15 @@ digraph G {
 		edge [style=dashed]
 		node [penwidth=0]
 
-		applianceKs [label="ovirt-node-appliance.ks"]
+		applianceKs [label="o-n-appliance.ks"]
 		lmc [label="livemedia-creator"]
 		applianceKs -> build
 		lmc -> build
 
 		cloud_init [label="cloud-init"]
-		squashfs [label="ovirt-node-appliance.squashfs.img"]
-		installKs [label="ovirt-node-appliance-auto-install.ks"]
+		squashfs [label="o-n-appliance.squashfs.img"]
+		installKs [label="o-n-appliance-auto-install.ks"]
+		build -> squashfs
 		cloud_init -> test
 		squashfs -> test
 		guestfish -> test
@@ -31,6 +32,9 @@ digraph G {
 
 		jenkins -> publish
 		yaml -> publish
+
+		guestfish -> customize
+		lmc -> customize
 
 		lvm -> install
 		anaconda -> install
