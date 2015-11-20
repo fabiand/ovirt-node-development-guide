@@ -52,7 +52,9 @@ If the kickstart defining the appliance is available, the image can be built usi
     make image-build
 
 
-# Build tooling: `image-tools`
+## Alternative build process: `image-tools`
+
+Originally a bunch of scripts - `image-tools` - were used to build the appliance.
 
 The `image-tools` [repository](https://github.com/fabiand/image-tools) contains some tooling to build the appliance images.
 
