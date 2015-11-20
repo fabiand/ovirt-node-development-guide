@@ -1,5 +1,8 @@
 
-DOTS = ngn-flow-components.dot.png ngn-flow.dot.png
+DOTS = \
+	ngn-flow-components.dot.png \
+	ngn-flow.dot.png \
+	build-flow.dot.png
 
 all: $(DOTS)
 
