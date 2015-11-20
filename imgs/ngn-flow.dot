@@ -1,6 +1,6 @@
 
 digraph G {
-	rankdir=TD
+	rankdir=LR
 	{	node [style=filled shape=box]
 		build test publish customize install upgrade rollback administer
 	}
