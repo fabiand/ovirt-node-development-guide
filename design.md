@@ -9,10 +9,46 @@ A few principles provide the frame for the upcoming design decisions:
 * Keep it simple
 * Separate areas of responsibility (image vs installation vs image management & upgrade)
 
+
+## Life-cycle Overview
+
+Before diving into the technical details let us get overview over how the life of an image is envisioned. Once we are aware of this, we can see what components can be used to fill these stations.
+
+> Note: When speaking of components, it is referred to another software project.
+
+![The life-cycle of an image.](imgs/ngn-flow.dot.png)
+
+As seen in the diagram above, and image is build, tested and published. These actions are normally performed by a vendor or project, providing the image.
+
+The image is **build** from a set of packages, normally consisting of a set of packages for the core operating system, and a couple of packages to provide the payload (in the oVirt case, vdsm is the payload).
+
+The **testing** can be considered to perform some sanity tests to i.e.
+
+- ensure that the image is not corrupted,
+- essential packages are installed,
+- but can also cover basic functional testing.
+
+Once the image is good, and image is **published** for user consumption.
+
+
+The remaining steps are the performed by users.
+
+
+If a user needs extra packages inside the image, he can **customize** the image before installation.
+
+Once he is satisfied, the image is **installed** onto a host and ready to use.
+
+At runtime the image is **administrated** through a user friendly UI.
+
+Eventually **upgrades** are available and get installed. These upgrades either end up successful or they fail. In case of a failure the **rollback** mechanism is used to roll back into the state prior to the upgrade, to return to a functioning system.
+
+
+
 ## Core technologies
 
-In the light of the principles above, the following (mainly) already existing technologies are combined to achieve the aspired goals:
+In the light of the principles, the following (mainly) already existing technologies fill in the flows described above:
 
+* Build: livemedia-creator and koji
 * Image format: liveimg
 * Installation: anaconda
 * Upgrade & Rollback: imgbased and LVM
@@ -20,8 +56,6 @@ In the light of the principles above, the following (mainly) already existing te
 * Administration: Cockpit
 
 The following diagram visualizes in what flows these technologies are used.
-
-![](imgs/ngn-flow.dot.png)
 
 
 
@@ -71,3 +105,8 @@ A few relevant main points are:
 The assumption is that these mechanisms above provide enough structure to build robust upgrades.
 
 ## Cockpit
+
+
+# Detailed Flow
+
+![](imgs/ngn-flow.dot.png)
