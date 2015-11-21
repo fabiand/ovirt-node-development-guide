@@ -84,3 +84,13 @@ All the details about the administration can be found in the [installation secti
 ## Upgrade & Rollback
 
 All the details about the upgrade and rollback can be found in the [installation section](upgrade.md).
+
+# Detailed Flow
+
+Now that we are aware of all the components we can assign them to the specific flows.
+The resulting diagram is shown below.
+You might notice that the diagram contains a few previously unnamed components, no worries, we'll speak about them later on.
+
+![](imgs/ngn-flow-components.dot.png)
+
+By now we assume that you got an idea of how the life-cycle of a Node looks, and what components are used in the specific flows.
