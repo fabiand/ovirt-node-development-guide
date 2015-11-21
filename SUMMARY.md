@@ -2,10 +2,10 @@
 
 * [Introduction](README.md)
 * [Design](design.md)
-* [Build process](build.md)
 * [Life-cycle](runtime.md)
+   * [Build](build.md)
    * Installation
-   * Configuration
+   * Administration
    * Upgrade & Rollback
    * Customization
 * [Implementation](impl.md)
