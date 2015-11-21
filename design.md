@@ -60,8 +60,8 @@ The layout and concept is aligned to what other projects like [OSTree](https://g
 
 ## Build
 
-`livemedia-creator` is intended to be used to build a squashfs image containing the root file-system.
-What the image contains is specified in the build kickstart (`ovirt-node-appliance.ks`).
+`livemedia-creator` is used to build a squashfs image containing the root file-system.
+The image is defined using the build kickstart (`ovirt-node-appliance.ks`).
 
 All the details about the build process can be found in the [build section](build.md).
 
