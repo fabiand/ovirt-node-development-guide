@@ -43,8 +43,7 @@ At runtime the image is **administrated** through a user friendly UI.
 Eventually **upgrades** are available and get installed. These upgrades either end up successful or they fail. In case of a failure the **rollback** mechanism is used to roll back into the state prior to the upgrade, to return to a functioning system.
 
 
-
-## Core technologies
+## Core technologies & concepts
 
 In the light of the principles, the following (mainly) already existing technologies were choosen to realize the flows above:
 
@@ -54,7 +53,9 @@ In the light of the principles, the following (mainly) already existing technolo
 * Installation: anaconda
 * Upgrade & Rollback: imgbased and LVM
 * Administration: Cockpit
-* Filesystem layout and concepts: Like [OSTree](https://github.com/GNOME/ostree) and ["Project Stateless"](http://0pointer.net/blog/projects/stateless.html)
+
+The file-system layout and related concepts are not a technology, but are crucial for data persistence and the stability of upgrades and rollbacks.
+The layout and concept is aligned to what other projects like [OSTree](https://github.com/GNOME/ostree) and ["Project Stateless"](http://0pointer.net/blog/projects/stateless.html) aim for.
 
 
 ### Image Format: Liveimg
