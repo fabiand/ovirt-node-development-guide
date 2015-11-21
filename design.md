@@ -72,3 +72,7 @@ All the details about the build process can be found in the [testing section](te
 ## Customization
 
 All the details about the build process can be found in the [customization section](customize.md).
+
+## Install
+
+All the details about the build process can be found in the [installation section](install.md).
