@@ -24,9 +24,9 @@ The image is **build** from a set of packages, normally consisting of a set of p
 
 The **testing** can be considered to perform some sanity tests to i.e.
 
-- ensure that the image is not corrupted,
-- essential packages are installed,
-- but can also cover basic functional testing.
+- Ensure that the image is not corrupted,
+- Essential packages are installed,
+- But can also cover basic functional testing.
 
 Once the image is good, it is **published** for further user consumption.
 
@@ -46,14 +46,15 @@ Eventually **upgrades** are available and get installed. These upgrades either e
 
 ## Core technologies
 
-In the light of the principles, the following (mainly) already existing technologies fill in the flows described above:
+In the light of the principles, the following (mainly) already existing technologies were choosen to realize the flows above:
 
-* Build: livemedia-creator and koji
-* Image format: liveimg
+* Build: livemedia-creator (or koji)
+* Delivery format: liveimg compatible squashfs
+* Customization: guestfish
 * Installation: anaconda
 * Upgrade & Rollback: imgbased and LVM
-* Filesystem layout and concepts: Like [OSTree](https://github.com/GNOME/ostree) and ["Project Stateless"](http://0pointer.net/blog/projects/stateless.html)
 * Administration: Cockpit
+* Filesystem layout and concepts: Like [OSTree](https://github.com/GNOME/ostree) and ["Project Stateless"](http://0pointer.net/blog/projects/stateless.html)
 
 
 ### Image Format: Liveimg
