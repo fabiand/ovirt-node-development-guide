@@ -67,12 +67,20 @@ All the details about the build process can be found in the [build section](buil
 
 ## Test
 
-All the details about the build process can be found in the [testing section](testing.md).
+All the details about the testing process can be found in the [testing section](testing.md).
 
 ## Customization
 
-All the details about the build process can be found in the [customization section](customize.md).
+All the details about the customization process can be found in the [customization section](customize.md).
 
 ## Install
 
-All the details about the build process can be found in the [installation section](install.md).
+All the details about the installation process can be found in the [installation section](install.md).
+
+## Administration
+
+All the details about the administration can be found in the [installation section](administration.md).
+
+## Upgrade & Rollback
+
+All the details about the upgrade and rollback can be found in the [installation section](upgrade.md).
