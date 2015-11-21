@@ -62,6 +62,20 @@ This is very redundant to `livemedia-creator` and `koji`.
 
 > FIXME this tool should be obsoleted by koji and livemdia-creator
 
+### Image Format: Liveimg
+
+Node is installed (and updated) using a single operating system image.
+Contrary to many other distributions packages are not used to install the operating system. Packages are primarily used to [build the image](build.md), and eventually to [customize the image](impl.md).
+
+The liveimg image format is a Fedora- and CentOS-ish format used to deliver LiveCDs.
+A liveimg is a file-system image wrapped into a squashfs image.
+The reasoning behind this matroska mechanism is that the file-system image can be mounted easily, and the squashfs image - as it can compress - is helping to reduce the size of the image.
+Because it has been around for a long time, this format has mature support in dracut and anaconda.
+This effectively enables two use-cases with one image:
+
+* anaconda can use this image as a source instead of individual rpms
+* dracut can boot into a liveimg
+
 
 ## Deliveryformat
 
