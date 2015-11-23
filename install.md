@@ -1,5 +1,7 @@
 # Installation
 
+To install the Node squashfs image you need a kickstart file which points
+
 ## Anaconda
 
 Anaconda is the installer of Fedora, CentOS, and RHEL.
