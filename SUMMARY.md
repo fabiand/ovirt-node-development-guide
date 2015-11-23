@@ -2,7 +2,7 @@
 
 * [Introduction](README.md)
 * [Design](design.md)
-* [Life-cycle](runtime.md)
+* Life-cycle
    * [Build](build.md)
    * Installation
    * Administration
