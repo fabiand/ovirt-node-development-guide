@@ -1,4 +1,10 @@
-# Image build process
+# Build process
+
+
+
+# Build process Anatomy
+
+In the prevois section you saw how you can build 
 
 ## Overview
 
