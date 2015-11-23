@@ -65,7 +65,7 @@ After the installation you can import the container into libvirt to use it.
 The squashfs image, a kickstart, and  `livecd-iso-to-disk` can be used to create a bootable USB media using the following steps:
 
 1. Fetch a CentOS 7 installation ISO
-2. Create a kickstart file using: `cat "liveimg --url=file://ovirt-node-appliance.squashfs.img" > liveimg-install.ks`
+2. Create a kickstart file using: `echo "liveimg --url=file://ovirt-node-appliance.squashfs.img" > liveimg-install.ks`
 3. Run `livecd-iso-to-disk $CENTOS_ISO $DISK --ks liveimg-install.ks`
 4. Mount the created disk, and copy the squashfs image to the same directory as the `liveimg-install.ks` file.
 
