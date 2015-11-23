@@ -1,6 +1,16 @@
 # Build process
 
+The current entry point to build the Node appliance is the `ovirt-appliance` repository:
 
+    git clone git://gerrit.ovirt.org/ovirt-appliance.git
+    git submodule update --init --recursive
+    
+    cd node-appliance
+    
+    # To build the squashfs image (liveimg):
+    make image-build
+
+`make image-build` will build the `ovirt-node-appliance.squashfs.img` from the kickstart `ovirt-node-appliance.ks`.
 
 # Build process Anatomy
 
