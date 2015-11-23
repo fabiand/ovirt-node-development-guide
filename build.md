@@ -14,7 +14,7 @@ The current entry point to build the Node appliance is the `ovirt-appliance` rep
 
 # Build process Anatomy
 
-In the prevois section you saw how you can build 
+In the previous section you saw how you can build the appliance, now you learn all the details about this build process.
 
 ## Overview
 
