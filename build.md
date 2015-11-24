@@ -1,47 +1,84 @@
 # Build process
 
-The current entry point to build the Node appliance is the `ovirt-appliance` repository:
+In the [getting started section](getting-started.md) it was shown that the
+following command will perform the image build:
 
-    git clone git://gerrit.ovirt.org/ovirt-appliance.git
-    git submodule update --init --recursive
-    
-    cd node-appliance
-    
-    # To build the squashfs image (liveimg):
     make image-build
 
-`make image-build` will build the `ovirt-node-appliance.squashfs.img` from the kickstart `ovirt-node-appliance.ks`.
-
-# Build process Anatomy
-
-In the previous section you saw how you can build the appliance, now you learn all the details about this build process.
+In this section we will review this build process in-depth.
 
 ## Overview
 
+From a high level view the build process is simple: A kickstart is passed
+to `livemedia-creator` which is in turn building the appliance image.
 
 ![](imgs/build-flow.dot.png)
 
+Let's start with the specifics about the kickstart file.
 
-## Specification
 
-As `anaconda` is used for building the image, a kickstart file is used to specify how the image should look.
+## Kickstart
 
-> Note: The kickstart defining the oVirt Node appliance is hosted in [oVirt's ovirt-appliance repository](https://gerrit.ovirt.org/gitweb?p=ovirt-appliance.git;a=blob;f=node-appliance/ovirt-node-appliance.ks;hb=HEAD)
+The _kickstart_ file defines what packages go into the appliance image. In
+addition a few additional configurations can be performed as part of the
+installation.
 
-An example kickstart can look like:
+A kickstart file is used, because anaconda is used for installation. And
+kickstarts are files which control unattended installations.
 
-    lang en_US.UTF-8
-    keyboard us
-    timezone --utc Etc/UTC
-    auth --enableshadow --passalgo=sha512
+See the [official kickstart documentation](https://github.com/rhinstaller/pykickstart/blob/master/docs/kickstart-docs.rst)
+for more informations.
+
+The specific kickstart which defines the oVirt Node appliance is defined in the
+`node-appliance/ovirt-node-appliance.ks` file, which hosted in the
+`ovirt-appliance` repository.
+See the [getting started section](getting-started.md) for how to clone that
+repository.
+
+### Unattended installation
+The first important note about the Node kickstart is, that it needs to contain
+informations to perform an [unattended installation](https://github.com/rhinstaller/pykickstart/blob/master/docs/kickstart-docs.rst#creating-the-kickstart-file).
+
+### Security
+To have a decent level of security, the image comes with:
+
++ SELinux in permissive mode (during development)
++ A locked _root_ account
++ A locked _node_ account, which should get unlocked during installation
+
+The following directives are used to achieve this:
+
     selinux --permissive
     rootpw --lock
     user --name=node --lock
-    firstboot --reconfig
+
+### Filesystem
+It is important that the kickstart will only create a disk with a single
+partition, because this single partition will get extracted and be wrapped
+into the squashfs.
+
+Another important point is to choose a filesystem which supports _discard_ or
+_trim_. This feature enables alter - after deployment - an efficient use of
+the available space, and is a curcial point in the upgrade and rollback
+implementation. See the [upgrade section](upgrade.md) for more details on
+the storage requirements.
+
+The following directives are used to ensure that only a single ext4 partition
+with _discard_ support is used:
+
     clearpart --all --initlabel
-    bootloader --timeout=1
     part / --size=3072 --fstype=ext4 --fsoptions=discard
-    poweroff
+
+### Packages
+The `%packages` section defines what packages get installed inside the
+appliance image.
+The main goal should be to keep this list small.
+
+If you see yourself adding packages to this kickstart section, then you should
+ask yourself, why this package you are adding, isn't a dependency of an already
+included package.
+
+Let's take a look at the important packages:
     
     %packages
     # config generic == not-hostonly, this is needed
@@ -52,23 +89,64 @@ An example kickstart can look like:
     grub2-efi
     shim
     efibootmgr
+
+    lvm2
+    imgbased
     %end
 
-A few notes on the kickstart above:
+The packages are used to achieve the following:
 
-* `dracut-config-generic` - Needed to create initramfs'es with broad hardware support
-* `grub2-efi`, `shim`, `efibootmgr` - To provide EFI support within the image (these packages will not be installed by anaconda, because they are not required at build time, but they could be required at installation time).
++ Add EFI support
++ Add generic initramfs support
++ Add lvm2 and imgbased support
 
-**FIXME** The package requirements should go to some package dependencies, i.e. `ovirt-release-node-host`.
+On normal installs of Fedora or CentOS these packages don't need to be added
+explicitly, because anaconda will install them autoamitcally if they are
+needed.
+`lvm2` will be installed if LVM is used for storage, `grub2-efi` will be
+installed if the OS is installed on EFI hardware, etc.
 
-## Build
+We need to install these packages explicitly, because it is expected that the
+applianc eimage contains everything that is needed for every use-case.
 
-If the kickstart defining the appliance is available, the image can be built using the tooling in the `ovirt-appliance` repository:
+**FIXME** The package requirements should go to some package dependencies,
+i.e. `ovirt-release-node-host`, see [this bug](https://bugzilla.redhat.com/show_bug.cgi?id=1285024).
 
-    make image-build
+### `%post` scriptlets for additional software
+
+You might have noticed that i.e. `vdsm` is missing in the package list above.
+
+`vdsm` can not be installed directly, because it needs the ovirt`-release`
+package to be installed, to get access to the necessary repositories.
+
+That is why `vdsm` is getting installed in a `%post` scriptlet.
 
 
-## Alternative build process: `image-tools`
+## Installation
+
+Now that the kickstart is ready, it is passed to anaconda inside the VM to
+install the required packages onto disk.
+
+Let's see how this step looks in-depth.
+
+## Anaconda arguments
+
+The key is to get anaconda to do an unattended install based on the kickstart.
+To achieve this you need to pass the following arguments to anaconda:
+
+    inst.cmdline inst.ks=<url-to-ks> inst.stage2=live:CDLABEL=CentOS\x207\x20x86_64
+
+This assumes that a CentOS 7 installation ISO is attached to the VM.
+
+See the [anaconda boot options documentation](https://github.com/rhinstaller/anaconda/blob/master/docs/boot-options.rst)
+for the details of those arguments.
+
+Both of the methods described below are using the same basic mechanism to
+perform the installation.
+They only differ in additional logic around pre- and post-processing of the
+kickstart and the final image.
+
+## Current build process: `image-tools`
 
 Originally a bunch of scripts - `image-tools` - were used to build the appliance.
 
