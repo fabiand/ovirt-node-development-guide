@@ -1,19 +1,13 @@
 # Summary
 
 * [Introduction](README.md)
+* 
 * [Design](design.md)
-* Life-cycle
    * [Build](build.md)
-   * Installation
-   * Administration
-   * Upgrade & Rollback
-   * Customization
-* [Implementation](impl.md)
-   * Appliance Build Process
-   * Image Management
-   * Boot loader
-   * Persistence
+   * [Installation](install.md)
+   * [Administration](administration.md)
+   * [Upgrade & Rollback](upgrade.md)
+   * [File-System Hierarchy](fsh.md)
 * [Testing](testing.md)
 * [Customization / Extending](customization.md)
 * [oVirt Engine integration](engine.md)
-
