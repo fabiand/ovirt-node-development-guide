@@ -18,7 +18,6 @@ Let's start with the specifics about the kickstart file.
 
 
 ## Kickstart
-
 The _kickstart_ file defines what packages go into the appliance image. In
 addition a few additional configurations can be performed as part of the
 installation.
@@ -37,7 +36,10 @@ repository.
 
 ### Unattended installation
 The first important note about the Node kickstart is, that it needs to contain
-informations to perform an [unattended installation](https://github.com/rhinstaller/pykickstart/blob/master/docs/kickstart-docs.rst#creating-the-kickstart-file).
+enough informations to perform an [unattended installation](https://github.com/rhinstaller/pykickstart/blob/master/docs/kickstart-docs.rst#creating-the-kickstart-file).
+
+There are "enough informations" if the kickstart provides answers to all
+required spokes.
 
 ### Security
 To have a decent level of security, the image comes with:
@@ -121,7 +123,6 @@ package to be installed, to get access to the necessary repositories.
 
 That is why `vdsm` is getting installed in a `%post` scriptlet.
 
-
 ## Installation
 
 Now that the kickstart is ready, it is passed to anaconda inside the VM to
@@ -141,20 +142,27 @@ This assumes that a CentOS 7 installation ISO is attached to the VM.
 See the [anaconda boot options documentation](https://github.com/rhinstaller/anaconda/blob/master/docs/boot-options.rst)
 for the details of those arguments.
 
-Both of the methods described below are using the same basic mechanism to
-perform the installation.
+
+Before we continue: Both of the methods described below are using the same
+basic mechanism to perform the installation.
 They only differ in additional logic around pre- and post-processing of the
 kickstart and the final image.
 
 ## Current build process: `image-tools`
 
-Originally a bunch of scripts - `image-tools` - were used to build the appliance.
+The `image-tools` script collection is mimicing the behavior of
+`livemedia-creator`, the main difference is that `image-tools` are using
+qemu directly, to be able to use this scripts in Jenkins.
 
-The `image-tools` [repository](https://github.com/fabiand/image-tools) contains some tooling to build the appliance images.
+To get started, you can clone the `image-tools`
 
-This is very redundant to `livemedia-creator` and `koji`.
+    git clone https://github.com/fabiand/image-tools
 
-> FIXME this tool should be obsoleted by koji and livemdia-creator
+
+The main build logic is in the `anaconda_install` script.
+This script will then perform the installation as described previously.
+
+**FIXME** this tool should be obsoleted by koji and livemdia-creator
 
 ### Image Format: Liveimg
 
