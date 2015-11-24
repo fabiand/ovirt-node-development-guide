@@ -1,7 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
-* [Getting started](getting-started.md)
+* [Getting started](getting-startedmd.md)
 * [Design](design.md)
    * [Build](build.md)
    * [Installation](install.md)
@@ -11,3 +11,4 @@
 * [Testing](testing.md)
 * [Customization / Extending](customization.md)
 * [oVirt Engine integration](engine.md)
+
