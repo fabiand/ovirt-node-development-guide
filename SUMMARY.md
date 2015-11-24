@@ -1,6 +1,6 @@
 # Summary
 
-* [Introduction](README.md)
+* [Overview](README.md)
 * [Getting started](getting-started.md)
 * [Design](design.md)
    * [Build](build.md)

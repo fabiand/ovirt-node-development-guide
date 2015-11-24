@@ -7,20 +7,26 @@ A few principles provide the frame for the upcoming design decisions:
 * Re-use existing and mature technologies (anaconda, lvm, cockpit)
 * Fix upstream to fit our design
 * Keep it simple
-* Separate areas of responsibility (image vs installation vs image management & upgrade)
+* Separate areas of responsibility (image vs installation vs image management
+  & upgrade)
 
 
 ## Life-cycle Overview
 
-Before diving into the technical details let us get overview over how the life of an image is envisioned. Once we are aware of this, we can see what components[^1] can be used to fill these stations.
+Before diving into the technical details let us get overview over how the life
+of an image is envisioned. Once we are aware of this, we can see what
+components[^1] can be used to fill these stations.
 
 [^1] When speaking of components, it is referred to another software project.
 
 ![The life-cycle of an image.](imgs/ngn-flow.dot.png)
 
-As seen in the diagram above, and image is build, tested and published. These actions are normally performed by a vendor or project, providing the image.
+As seen in the diagram above, and image is build, tested and published. These
+actions are normally performed by a vendor or project, providing the image.
 
-The image is **build** from a set of packages, normally consisting of a set of packages for the core operating system, and a couple of packages to provide the payload (in the oVirt case, vdsm is the payload).
+The image is **build** from a set of packages, normally consisting of a set of
+packages for the core operating system, and a couple of packages to provide the
+payload (in the oVirt case, vdsm is the payload).
 
 The **testing** can be considered to perform some sanity tests to i.e.
 
@@ -34,18 +40,23 @@ Once the image is good, it is **published** for further user consumption.
 The remaining steps are the performed by users.
 
 
-If a user needs extra packages inside the image, he can **customize** the image before installation.
+If a user needs extra packages inside the image, he can **customize** the image
+before installation.
 
 Once he is satisfied, the image is **installed** onto a host and ready to use.
 
 At runtime the image is **administrated** through a user friendly UI.
 
-Eventually **upgrades** are available and get installed. These upgrades either end up successful or they fail. In case of a failure the **rollback** mechanism is used to roll back into the state prior to the upgrade, to return to a functioning system.
+Eventually **upgrades** are available and get installed. These upgrades either
+end up successful or they fail. In case of a failure the **rollback** mechanism
+is used to roll back into the state prior to the upgrade, to return to a
+functioning system.
 
 
 ## Core technologies & concepts
 
-In the light of the principles, the following (mainly) already existing technologies were choosen to realize the flows above:
+In the light of the principles, the following (mainly) already existing
+technologies were choosen to realize the flows above:
 
 * Build: livemedia-creator (or koji)
 * Delivery format: liveimg compatible squashfs
@@ -54,36 +65,13 @@ In the light of the principles, the following (mainly) already existing technolo
 * Upgrade & Rollback: imgbased and LVM
 * Administration: Cockpit
 
-The file-system layout and related concepts are not a technology, but are crucial for data persistence and the stability of upgrades and rollbacks.
-The layout and concept is aligned to what other projects like [OSTree](https://github.com/GNOME/ostree) and ["Project Stateless"](http://0pointer.net/blog/projects/stateless.html) aim for.
+The file-system layout and related concepts are not a technology, but are
+crucial for data persistence and the stability of upgrades and rollbacks.
+The layout and concept is aligned to what other projects like
+[OSTree](https://github.com/GNOME/ostree) and
+["Project Stateless"](http://0pointer.net/blog/projects/stateless.html) aim
+for.
 
-
-## Build
-
-`livemedia-creator` is used to build a squashfs image containing the root file-system.
-The image is defined using the build kickstart (`ovirt-node-appliance.ks`).
-
-All the details about the build process can be found in the [build section](build.md).
-
-## Test
-
-All the details about the testing process can be found in the [testing section](testing.md).
-
-## Customization
-
-All the details about the customization process can be found in the [customization section](customize.md).
-
-## Install
-
-All the details about the installation process can be found in the [installation section](install.md).
-
-## Administration
-
-All the details about the administration can be found in the [installation section](administration.md).
-
-## Upgrade & Rollback
-
-All the details about the upgrade and rollback can be found in the [installation section](upgrade.md).
 
 # Detailed Flow
 
