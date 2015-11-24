@@ -56,7 +56,7 @@ functioning system.
 ## Core technologies & concepts
 
 In the light of the principles, the following (mainly) already existing
-technologies were choosen to realize the flows above:
+technologies were chosen to realize the flows above:
 
 * Build: livemedia-creator (or koji)
 * Delivery format: liveimg compatible squashfs
@@ -73,10 +73,10 @@ The layout and concept is aligned to what other projects like
 for.
 
 
-# Detailed Flow
+## Detailed Flow
 
-Now that we are aware of all the components we can assign them to the specific flows.
-The resulting diagram is shown below.
+Now that we are aware of the components which come together to form Node, the following diagram illustrates in what flows they are used.
+
 You might notice that the diagram contains a few previously unnamed components, no worries, we'll speak about them later on.
 
 ![](imgs/ngn-flow-components.dot.png)
