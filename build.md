@@ -158,11 +158,11 @@ To get started, you can clone the `image-tools`
 
     git clone https://github.com/fabiand/image-tools
 
-
 The main build logic is in the `anaconda_install` script.
 This script will then perform the installation as described previously.
 
 **FIXME** this tool should be obsoleted by koji and livemdia-creator
+
 
 ### Image Format: Liveimg
 
