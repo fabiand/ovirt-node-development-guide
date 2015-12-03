@@ -51,4 +51,7 @@
 
 **FIXME**
 
-- squashfs wrapped in rpm, "dnf download" rpm, then use imgbase to upgrade
+- squashfs wrapped in rpm
+- "dnf download" rpm on the host
+- extract squashfs from the rpm
+- then use imgbase to upgrade
